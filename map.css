@@ -1,0 +1,215 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;    
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: auto; /* Allow scrolling */
+    background: #000;
+    color: #ffffff;
+}
+
+/* Animated Background */
+.background {
+    position: fixed; /* Change to fixed to cover entire viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+/* Floating Lights Animation */
+.light {
+    position: absolute;
+    width: 0px;
+    opacity: .75;
+    background-color: white;
+    box-shadow: #e9f1f1 0px 0px 20px 2px;
+    opacity: 0;
+    top: 100vh;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+}
+
+/* Animations for floating lights */
+.x1 { animation: floatUp 4s infinite linear; transform: scale(1.0); }
+.x2 { animation: floatUp 7s infinite linear; transform: scale(1.6); left: 15%; }
+.x3 { animation: floatUp 2.5s infinite linear; transform: scale(.5); left: -15%; }
+.x4 { animation: floatUp 4.5s infinite linear; transform: scale(1.2); left: -34%; }
+.x5 { animation: floatUp 8s infinite linear; transform: scale(2.2); left: -57%; }
+.x6 { animation: floatUp 3s infinite linear; transform: scale(.8); left: -81%; }
+.x7 { animation: floatUp 5.3s infinite linear; transform: scale(3.2); left: 37%; }
+.x8 { animation: floatUp 4.7s infinite linear; transform: scale(1.7); left: 62%; }
+.x9 { animation: floatUp 4.1s infinite linear; transform: scale(0.9); left: 85%; }
+
+@keyframes floatUp {
+    0% { top: 100vh; opacity: 0; }
+    25% { opacity: 1; }
+    50% { top: 0vh; opacity: .8; }
+    75% { opacity: 1; }
+    100% { top: -100vh; opacity: 0; }
+}
+
+/* Title Styles */
+h1 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 3.5em; /* Increased font size */
+    font-weight: 900; /* Bold font weight */
+    animation: fadeIn 1s ease-in, diamondEffect 1.5s ease-in-out infinite alternate; /* Updated effect */
+    padding: 60px;
+}
+
+@keyframes diamondEffect {
+    0% { text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff; } /* Diamond blue */
+    50% { text-shadow: 0 0 20px #00bfff, 0 0 30px #00bfff; }
+    100% { text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff; }
+}
+
+/* Search Bar Styles */
+#searchBar {
+    width: 100%;
+    max-width: 700px;
+    padding: 15px 20px;
+    font-size: 1.2em;
+    border-radius: 30px;
+    outline: none;
+    margin-bottom: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+#searchBar:focus {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Container and Button Styles */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 100px; /* Ensure some space at the bottom */
+}
+
+.container .btn {
+    font-family: "Montserrat", sans-serif; /* Updated font */
+    position: relative;
+    width: 320px; /* Increased width for buttons */
+    height: 70px; /* Increased height for better touch targets */
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .btn a {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1); /* Change to a lighter base */
+    border: 2px solid #00bfff; /* Diamond blue color */
+    border-radius: 30px;
+    padding: 15px;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    overflow: hidden;
+    color: #ffffff;
+    font-weight: 700; /* Bolder font weight */
+    z-index: 1;
+    transition: 0.5s;
+    backdrop-filter: blur(10px);
+    font-size: 1.3em;
+    font-family: "Montserrat", sans-serif; /* Updated font */
+}
+
+.container .btn:hover a {
+    letter-spacing: 4px;
+    background: rgba(0, 191, 255, 0.2); /* Light diamond blue on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+}
+
+.container .btn::before, .container .btn::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+    width: 35px;
+    height: 15px;
+    background: #00bfff; /* Bright diamond blue */
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.container .btn::before {
+    bottom: -5px;
+}
+
+.container .btn:hover::before {
+    bottom: 0;
+    height: 60%;
+    width: 80%;
+    border-radius: 30px;
+}
+
+.container .btn::after {
+    top: -5px;
+}
+
+.container .btn:hover::after {
+    top: 0;
+    height: 60%;
+    width: 80%;
+    border-radius: 30px;
+}
+
+/* Copyright Styles */
+.copyright {
+    margin-top: auto; /* Push to the bottom */
+    padding: 20px;
+    font-size: 0.9em; /* Slightly larger font size */
+    color: #ff8800; /* Orange color */
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+    position: relative; /* Positioning for effect */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.copyright:hover {
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 4px 15px rgba(255, 136, 0, 0.5); /* Shadow effect */
+}
+
+/* Animation for the copyright section */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Apply animation to copyright text */
+.copyright {
+    animation: fadeIn 1s ease-in;
+}
